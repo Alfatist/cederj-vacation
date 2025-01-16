@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vou passar, CEDERJ?</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #1a1a1a;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            flex-direction: column;
+        }
+
+        .container {
+            background-color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #ffcc00;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        h2 {
+            color: #ff66c4;
+            margin-bottom: 20px;
+            font-size: 1em;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #fff;
+            text-align: left;
+        }
+
+        input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #ffcc00;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #4d4d4d;
+            color: #fff;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #ff66c4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ffcc00;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #ffcc00;
+            background-color: #4d4d4d;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            min-height: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        #result.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .footer {
+            background-color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer-text {
+            font-size: 16px;
+            color: #ffcc00;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        .footer-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .icon-link {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-icon {
+            width: 32px;
+            height: 32px;
+            transition: opacity 0.3s;
+        }
+
+        .icon-link:hover {
+            transform: scale(1.1);
+        }
+
+        .footer-icon:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .footer-text {
+                font-size: 14px;
+            }
+            .footer-icons {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calcular Nota AP2 (ou AP3)</h1>
+        <h2>Digite suas notas:</h2>
+        <form id="notaForm">
+            <label for="ad1">Nota da AD1:</label>
+            <input type="number" id="ad1" name="ad1" step="0.01" required>
+
+            <label for="ap1">Nota da AP1:</label>
+            <input type="number" id="ap1" name="ap1" step="0.01" required>
+
+            <label for="ad2">Nota da AD2:</label>
+            <input type="number" id="ad2" name="ad2" step="0.01" required>
+
+            <button type="submit">Calcular</button>
+        </form>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        document.getElementById('notaForm').onsubmit = async function(event) {
+            event.preventDefault();
+
+            let ad1 = document.getElementById('ad1').value;
+            let ap1 = document.getElementById('ap1').value;
+            let ad2 = document.getElementById('ad2').value;
+            let resultElement = document.getElementById('result');
+
+            if (!ad1 || !ap1 || !ad2) {
+                resultElement.innerText = 'Por favor, preencha todos os campos.';
+                resultElement.classList.add('visible');
+                return;
+            }
+
+            let response = await fetch('/calculate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ ad1, ap1, ad2 })
+            });
+
+            if (response.ok) {
+                let result = await response.json();
+                resultElement.innerText = `Você precisa tirar pelo menos ${result.nota_ap2.toFixed(2)} na AP2 para alcançar uma média final de 6.`;
+            } else {
+                resultElement.innerText = 'Erro ao calcular. Tente novamente.';
+            }
+
+            resultElement.classList.add('visible');
+        }
+    </script>
+
+    <footer class="footer">
+        <p class="footer-text">Feito por Beatriz Costa</p>
+        <div class="footer-icons">
+            <a href="mailto:devbcdc@proton.me" target="_blank" class="icon-link">
+                <img src="/static/assets/icons8-mail-48.png" alt="Email" class="footer-icon">
+            </a>
+            <a href="https://www.github.com/brawlingthebits" target="_blank" class="icon-link">
+                <img src="/static/assets/icons8-github-48.png" alt="GitHub" class="footer-icon">
+            </a>
+            <a href="https://www.linkedin.com/in/dev-bcdc/" target="_blank" class="icon-link">
+                <img src="/static/assets/icons8-linkedin-circundado-48.png" alt="LinkedIn" class="footer-icon">
+            </a>
+        </div>
+    </footer>
+</body>
+</html>
