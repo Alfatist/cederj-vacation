@@ -1,212 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vou passar, CEDERJ?</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-body {
-    font-family: 'Press Start 2P', cursive;
-    background-color: #1a1a1a;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    color: #fff;
-    flex-direction: column;
-    box-sizing: border-box;
-}
-
-.container {
-    background-color: #333;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    max-width: 400px;
-    width: 90%;
-    text-align: center;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-}
-
-h1 {
-    color: #ffcc00;
-    margin-bottom: 10px;
-    font-size: 1.5em;
-}
-
-h2 {
-    color: #ff66c4;
-    margin-bottom: 20px;
-    font-size: 1em;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    color: #fff;
-    text-align: left;
-}
-
-input {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 2px solid #ffcc00;
-    border-radius: 5px;
-    box-sizing: border-box;
-    background-color: #4d4d4d;
-    color: #fff;
-}
-
-button {
-    width: 100%;
-    padding: 15px;
-    background-color: #ff66c4;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #ffcc00;
-}
-
-#result {
-    margin-top: 20px;
-    font-size: 18px;
-    color: #ffcc00;
-    background-color: #4d4d4d;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    min-height: 0;
-    transition: opacity 0.3s, visibility 0.3s;
-    opacity: 0;
-    visibility: hidden;
-}
-
-#result.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-.footer {
-    background-color: #333;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    max-width: 400px;
-    width: 90%;
-    text-align: center;
-    margin-top: 20px;
-    box-sizing: border-box;
-}
-
-.footer-text {
-    font-size: 14px;
-    color: #ffcc00;
-    margin: 0;
-    margin-bottom: 10px;
-}
-
-.footer-icons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.icon-link {
-    display: inline-block;
-    transition: transform 0.3s ease;
-}
-
-.footer-icon {
-    width: 32px;
-    height: 32px;
-    transition: opacity 0.3s;
-}
-
-.icon-link:hover {
-    transform: scale(1.1);
-}
-
-.footer-icon:hover {
-    opacity: 0.8;
-}
-
-/* Responsive adjustments for small screens */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 1.2em;
-    }
-
-    h2 {
-        font-size: 0.9em;
-    }
-
-    input {
-        width: calc(100% - 20px);
-        padding: 8px;
-    }
-
-    button {
-        padding: 12px;
-        font-size: 14px;
-    }
-
-    .footer-text {
-        font-size: 12px;
-    }
-
-    .footer-icons {
-        gap: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    body {
-        padding: 10px;
-    }
-
-    .container,
-    .footer {
-        padding: 15px;
-        width: 100%;
-    }
-
-    h1 {
-        font-size: 1.1em;
-    }
-
-    h2 {
-        font-size: 0.8em;
-    }
-
-    button {
-        font-size: 12px;
-    }
-
-    .footer-icons {
-        gap: 8px;
-    }
-}
-
-    </style>
+    <title>Quanto preciso, CEDERJ?</title>
+    <link rel="stylesheet" href="./static/css/style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Calcular Nota AP2 (ou AP3)</h1>
-        <h2>Digite suas notas:</h2>
-        <form id="notaForm">
+        <h1>Calcular Nota restante</h1>
+        <h2>Insira as notas que você possui:</h2>
+        <form id="mainForm">
+          <table>
+            <caption>obs: notas de 0 a 10</caption>
+            <tr>
+              <th></th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+            </tr>
+            <tr>
+              <th>AD</th>
+              <td><input type="number" min="0" max="10" required placeholder="AD1*" id="nota ad1" tabindex="1" data-mask="score"></td>
+              <td><input type="number" min="0" max="10" placeholder="AD2" id="nota ad2" tabindex="3" data-mask="score"></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>AP</td>
+              <td><input type="number" min="0" max="10" required placeholder="AP1*" id="nota ap1" tabindex="2" data-mask="score"></td>
+              <td><input type="number" min="0" max="10" placeholder="AP2" id="nota ap2" tabindex="4" data-mask="score"></td>
+              <td><input type="number" min="0" max="10" placeholder="AP3" id="nota ap3" tabindex="5" data-mask="score"></td>
+            </tr>
+          </table>
+
+          
+          <button type="submit">Calcular</button>
+        </form>
+        <!-- <form id="notaForm">
             <label for="ad1">Nota da AD1:</label>
             <input type="number" id="ad1" name="ad1" step="0.01" required>
 
@@ -217,44 +47,10 @@ button:hover {
             <input type="number" id="ad2" name="ad2" step="0.01" required>
 
             <button type="submit">Calcular</button>
-        </form>
+        </form> -->
 
-        <p id="result"></p>
+        <p id="result"><span style="opacity: 0.2;">Resultado</span></p>
     </div>
-
-    <script>
-        document.getElementById('notaForm').onsubmit = async function(event) {
-            event.preventDefault();
-
-            let ad1 = document.getElementById('ad1').value;
-            let ap1 = document.getElementById('ap1').value;
-            let ad2 = document.getElementById('ad2').value;
-            let resultElement = document.getElementById('result');
-
-            if (!ad1 || !ap1 || !ad2) {
-                resultElement.innerText = 'Por favor, preencha todos os campos.';
-                resultElement.classList.add('visible');
-                return;
-            }
-
-            let response = await fetch('/calculate', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ ad1, ap1, ad2 })
-            });
-
-            if (response.ok) {
-                let result = await response.json();
-                resultElement.innerText = `Você precisa tirar pelo menos ${result.nota_ap2.toFixed(2)} na AP2 para alcançar uma média final de 6.`;
-            } else {
-                resultElement.innerText = 'Erro ao calcular. Tente novamente.';
-            }
-
-            resultElement.classList.add('visible');
-        }
-    </script>
 
     <footer class="footer">
         <p class="footer-text">Feito por Beatriz Costa</p>
@@ -270,5 +66,22 @@ button:hover {
             </a>
         </div>
     </footer>
+
+    <script type="module" src="./static/js/script.js"></script>
+
+    <script title="validador input número (notas)">
+      document.querySelectorAll('[data-mask="score"]').forEach(input => {
+        input.addEventListener('input', function () {
+    
+        let valor = parseFloat(this.value);
+        console.log(valor);
+        
+        if (valor < 0) return this.value = 0;
+        if (valor > 10){ 
+          return this.value = 10;
+        }
+      });
+    });
+    </script>
 </body>
 </html>
