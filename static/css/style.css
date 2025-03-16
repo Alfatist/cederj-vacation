@@ -16,6 +16,7 @@ body {
     color: #fff;
     flex-direction: column;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .container {
@@ -28,6 +29,7 @@ body {
     text-align: center;
     margin-bottom: 20px;
     box-sizing: border-box;
+    position: relative;
 }
 
 h1 {
@@ -40,13 +42,6 @@ h2 {
     color: #ff66c4;
     margin-bottom: 20px;
     font-size: 1em;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    color: #fff;
-    text-align: left;
 }
 
 input{
@@ -84,7 +79,7 @@ button:hover {
 
 #result {
     margin-top: 20px;
-    font-size: 18px;
+    font-size: 14px;
     color: #ffcc00;
     background-color: #4d4d4d;
     padding: 10px;
@@ -92,13 +87,8 @@ button:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     min-height: 0;
     transition: opacity 0.3s, visibility 0.3s;
+    line-height: 1.2;
     
-    
-}
-
-#result.visible {
-    opacity: 1;
-    visibility: visible;
 }
 
 .footer {
@@ -207,6 +197,7 @@ table {
   width: 100%;  
   font-size: 0.8rem;
   letter-spacing: 1px;
+  overflow: hidden;
 }
 
 caption {
@@ -219,4 +210,77 @@ th,
 td {
   border: 1px solid rgb(160 160 160);
   padding: 8px 10px;
+}
+
+.container-ajuda{
+  border: 1px solid #fff;
+  border-radius: 12px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4px;
+  transform: translate(10px, -5px);
+}
+
+.saber-mais{
+  position: absolute;
+  min-width: 100vw ;
+  min-height: 100vh;
+  background-color: #333333cb;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+#ajuda:checked ~ .saber-mais {
+  display: flex;
+}
+
+.container.ajuda{
+  max-width: 90vw;
+  overflow: auto;
+}
+
+.calculos tr:nth-last-child(2) th td{
+  border-color: yellow;
+}
+
+.calculos caption{
+  caption-side: top;
+}
+
+.result-table td, .result-table th{
+  border-color: yellow;
+  
+}
+
+.formulas{
+  display: inline;
+}
+
+.formulas th{
+  text-align: start;
+}
+
+.overflow-table{
+  overflow: auto;
+  scrollbar-width: thin;
+}
+
+.saber-mais *{
+  max-height: 100vh;
+}
+
+.container-ajuda-sair{
+  position: absolute;
+  right: 20px;
+  font-size: 18px;
+
+}
+
+label:hover{
+  color: purple;
+  border-color: purple;
+  cursor: pointer;
 }

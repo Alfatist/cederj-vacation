@@ -8,28 +8,29 @@
 </head>
 <body>
     <div class="container">
-        <h1>Calcular Nota restante</h1>
-        <h2>Insira as notas que você possui:</h2>
+        <label for="ajuda" class="container-ajuda" title="Saiba mais">?</label>
+        <h1>Simulador notas CEDERJ!</h1>
+        <h2>Insira as notas:</h2>
         <form id="mainForm">
           <table>
             <caption>obs: notas de 0 a 10</caption>
             <tr>
               <th></th>
-              <th>1</th>
+              <th title="Preencha todos os itens desta coluna">1*</th>
               <th>2</th>
               <th>3</th>
             </tr>
             <tr>
               <th>AD</th>
-              <td><input type="number" min="0" max="10" required placeholder="AD1*" id="nota ad1" tabindex="1" data-mask="score"></td>
-              <td><input type="number" min="0" max="10" placeholder="AD2" id="nota ad2" tabindex="3" data-mask="score"></td>
+              <td><input type="number" min="0" max="10" required placeholder="AD1*" id="nota ad1" tabindex="1" data-mask="score" inputmode="decimal" step="0.00001"></td>
+              <td><input type="number" min="0" max="10" placeholder="AD2" id="nota ad2" tabindex="3" data-mask="score" inputmode="decimal" step="0.00001"></td>
               <td></td>
             </tr>
             <tr>
               <td>AP</td>
-              <td><input type="number" min="0" max="10" required placeholder="AP1*" id="nota ap1" tabindex="2" data-mask="score"></td>
-              <td><input type="number" min="0" max="10" placeholder="AP2" id="nota ap2" tabindex="4" data-mask="score"></td>
-              <td><input type="number" min="0" max="10" placeholder="AP3" id="nota ap3" tabindex="5" data-mask="score"></td>
+              <td><input type="number" min="0" max="10" required placeholder="AP1*" id="nota ap1" tabindex="2" data-mask="score" inputmode="decimal" step="0.00001"></td>
+              <td><input type="number" min="0" max="10" placeholder="AP2" id="nota ap2" tabindex="4" data-mask="score" inputmode="decimal" step="0.00001"></td>
+              <td><input type="number" min="0" max="10" placeholder="AP3" id="nota ap3" tabindex="5" data-mask="score" inputmode="decimal" step="0.00001"></td>
             </tr>
           </table>
 
@@ -51,22 +52,128 @@
 
         <p id="result"><span style="opacity: 0.2;">Resultado</span></p>
     </div>
+    <input type="checkbox" name="ajuda" id="ajuda" style="display: none;">
+    <section class="saber-mais">
+      <div class="container ajuda">
+        <label for="ajuda" class="container-ajuda-sair" title="Sair">X</label>
+        <h1>Saiba mais!</h1>
+        <h2>Olá, este é um sistema desenvolvido por alunos do CEDERJ. A proposta é você inserir a nota que você já tem e o sistema lhe dizer qual a sua atual situação.</h2>
+        <div class="overflow-table">
+        <table class="calculos">
+          <caption>Cálculos</caption>
+          <tr>
+            <th></th>
+            <th>Caso 1</th>
+            <th>Caso 2</th>
+            <th>Caso 3</th>
+            <th>Caso 4</th>
+            
+          </tr>
+
+          <tr>
+            <th>
+              AD1
+            </th>
+            <td>X</td>
+            <td>X</td>
+            <td>X</td>
+            <td>X</td>
+            
+          </tr>
+          <tr>
+            <th>
+              AP1
+            </th>
+            <td>X</td>
+            <td>X</td>
+            <td>X</td>
+            <td>X</td>
+            
+          </tr>
+          <tr>
+            <th>
+              AD2
+            </th>
+            <td></td>
+            <td>X</td>
+            <td>X</td>
+            <td>X</td>
+            
+
+          </tr>
+          <tr>
+            <th>
+              AP2
+            </th>
+            <td></td>
+            <td></td>
+            <td>X</td>
+            <td>X</td>
+            
+
+          </tr>
+          <tr>
+            <th>
+              AP3
+            </th>
+            <td></td>
+            <td></td>
+            <td></td>
+            
+            <td>X</td>
+
+          </tr>
+          <tr class="result-table">
+            <th>
+              Eu prevejo: 
+            </th>
+            <td>AP2</td>
+            <td>AP2</td>
+            <td>AP3</td>
+            <td>Se passou</td>
+
+          </tr>
+          
+        </table>
+      </div>
+
+        
+        <h2>FÓRMULAS e CONSTANTES</h2>
+        <div class="overflow-table">
+          <table class="formulas">
+            <caption>Em caso de AP3, a AP3 substitui a menor N e a média cai para 5</caption>
+            <tr><th>MÉDIA</th> <td>6</td></tr>
+            <tr><th>MÉDIA (caso ap3)</th> <td>5</td></tr>
+            <tr><th>N1</th> <td>0.2 x AD1 + 0.8 x AP1</td></tr>
+            <tr><th>N2</th> <td>0.2 x AD2 + 0.8 x AP2</td></tr>
+            <tr class="result-table"><th>Cálculo final</th> <td>(N1 + N2)/2</td></tr>
+
+
+          </table>
+        </div>
+        <!-- <p style="text-align: start;">Média: 6 <br>Média (caso ap3): 5 <br>N1: AD1 + AD</p> -->
+      </div>
+
+    </section>
+    
 
     <footer class="footer">
         <p class="footer-text">Feito por Beatriz Costa</p>
         <div class="footer-icons">
             <a href="mailto:devbcdc@proton.me" target="_blank" class="icon-link">
-                <img src="/static/assets/icons8-mail-48.png" alt="Email" class="footer-icon">
+                <img src="./static/assets/icons8-mail-48.png" alt="Email" class="footer-icon">
             </a>
             <a href="https://www.github.com/brawlingthebits" target="_blank" class="icon-link">
-                <img src="/static/assets/icons8-github-48.png" alt="GitHub" class="footer-icon">
+                <img src="./static/assets/icons8-github-48.png" alt="GitHub" class="footer-icon">
             </a>
             <a href="https://www.linkedin.com/in/dev-bcdc/" target="_blank" class="icon-link">
-                <img src="/static/assets/icons8-linkedin-circundado-48.png" alt="LinkedIn" class="footer-icon">
+                <img src="./static/assets/icons8-linkedin-circundado-48.png" alt="LinkedIn" class="footer-icon">
             </a>
         </div>
     </footer>
+    <p style="position: absolute; bottom: 0; font-size: 12px;">Melhorado por <a href="https://www.github.com/alfatist">alfatista</a></p>
 
+    <script src='./static/js/bigNumber.js' title="precisao_matematica"></script>
     <script type="module" src="./static/js/script.js"></script>
 
     <script title="validador input número (notas)">
@@ -74,7 +181,6 @@
         input.addEventListener('input', function () {
     
         let valor = parseFloat(this.value);
-        console.log(valor);
         
         if (valor < 0) return this.value = 0;
         if (valor > 10){ 
