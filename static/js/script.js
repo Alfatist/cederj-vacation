@@ -21,6 +21,7 @@ function submitMainForm(e){
   ap1.value = resultJson.values.ap1
   ap2.value = resultJson.values.ap2
   ap3.value = resultJson.values.ap3
+  
 }
 
 function _customParseNumber(string){

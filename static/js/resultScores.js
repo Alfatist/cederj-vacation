@@ -87,8 +87,13 @@ function _casead2ap2(n1, ad2, ap2, result){
 }
 
 function _isPossibleToPassWithoutAP3(n1, ad2){
-  if(n1/2 + (ad2*10)/100 + 4 < average) return false;
-  return true; 
+  let x = new BigNumber(ad2)
+  x = x.multipliedBy(0.1);
+  let y = new BigNumber(n1);
+  y = y.div(2);
+  let result = y.plus(x).plus(4).toNumber() >= average;
+
+  return result;
 }
 
 function _howMuchNeededAp3(n1, n2){
@@ -97,7 +102,13 @@ function _howMuchNeededAp3(n1, n2){
 }
 
 function _howMuchNeededAp2(n1, ad2) {
-  return (average - (n1 / 2) - (ad2*0.1))/0.4
+  let x = new BigNumber(ad2)
+  x = x.multipliedBy(0.1);
+  let y = new BigNumber(n1);
+  y = y.div(2);
+  let result = new BigNumber(average - y - x);
+  result = result.div(0.4);
+  return result.toNumber();
 }
   
 function _obtainNx(ad, ap, pesoAdPorcento = 0.2, pesoApPorcento = 0.8){
