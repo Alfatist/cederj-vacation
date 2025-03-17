@@ -16,7 +16,8 @@ body {
     color: #fff;
     flex-direction: column;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: auto;
+    position: relative;
 }
 
 .container {
@@ -100,6 +101,7 @@ button:hover {
     width: 90%;
     text-align: center;
     margin-top: 20px;
+    margin-bottom: 35px;
     box-sizing: border-box;
 }
 
