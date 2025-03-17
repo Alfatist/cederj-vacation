@@ -28,10 +28,12 @@ body {
     max-width: 400px;
     width: 90%;
     text-align: center;
-    margin-bottom: 20px;
+    margin: 20px 0;
     box-sizing: border-box;
     position: relative;
 }
+
+
 
 h1 {
     color: #ffcc00;
@@ -238,6 +240,15 @@ td {
 #ajuda:checked ~ .saber-mais {
   display: flex;
 }
+
+#ajuda:checked + .container {
+  display: none;
+}
+
+body:has(#ajuda:checked){
+  overflow: hidden;
+}
+
 
 .container.ajuda{
   max-width: 90vw;
