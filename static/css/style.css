@@ -258,6 +258,7 @@ body:has(#ajuda:checked){
 .container.ajuda{
   max-width: 90vw;
   overflow: auto;
+  padding-bottom: 70px;
 }
 
 .calculos tr:nth-last-child(2) th td{
@@ -345,7 +346,7 @@ h3.period{
 }
 
 .fields{
-  overflow: auto;
+  overflow-y: scroll;
   scrollbar-width: thin;
   margin-bottom: 8px;
 }
