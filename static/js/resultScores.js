@@ -1,10 +1,16 @@
+import { customRound } from "./helpers/customRound.js";
+
 const average = 6;
 const averageInAP3 = 5;
 
 export function resultScores(ad1, ap1, ad2, ap2, ap3) {
   if( typeof ad1 !== "number" && typeof ap1 !== "number") throw Error("Necessário ad1 e ap1");
-  let n1 = _obtainNx(ad1, ap1);
+  [ad1, ap1, ad2, ap2, ap3] = _addMissingValuesIfAny(ad1, ap1, ad2, ap2, ap3);
+  
+  /** Caso precise alertar um texto no fim, adicione o texto a esta variável */ 
   let textToAlert = ""
+
+  /** Resultado que retorna no final de tudo*/
   let result = {
     "texto": "",
     "values": {
@@ -16,37 +22,48 @@ export function resultScores(ad1, ap1, ad2, ap2, ap3) {
     }
   }
 
-  let n2 = 0;
-
-
-  if(n1 === 10) textToAlert = "Atenção! você tirou 10 na AD1 e AP1, então a AP3 vira só formalidade. Consulte o regulamento.\nO sistema assumirá que você deve fazer as provas.";
-
-  if(typeof ap2 === "number" && typeof ad2 !== "number"){
-    ad2 = 0;
-    result["values"]["ad2"] = 0
-  }
-  if(typeof ap3 === "number" && typeof ap2 !== "number"){
-    ap2 = 0;
-    result["values"]["ap2"] = 0
-  }
+  let n1 = _obtainNx(ad1, ap1);
 
   if((typeof ap2 === "number") && (typeof ad2 === "number") && (typeof ap3 === "number")) _casead2ap2ap3(n1, ad2, ap2, ap3, result)  
   else if (typeof ap2 === "number" && typeof ad2 === "number") _casead2ap2(n1, ad2, ap2, result)
   else if (typeof ad2 === "number") _casead2(n1, ad2, result)
   else _casenone(n1, result);
 
-  if(textToAlert != "") alert(textToAlert)
+  if(_checkIfPassedDirectly(n1)) _casePassedDirectly(result, true);  
+
+  if(textToAlert != "") alert(textToAlert);
   return result
 }
 
+/** Normaliza os valores, ou seja, adiciona os valores faltantes com default e converte tudo para inteiro. 
+ * Por exemplo, se AP3 foi passado mas ap2 não, ap2 será 0.
+*/
+function _addMissingValuesIfAny(ad1, ap1, ad2, ap2, ap3){
+  if(typeof ap2 === "number" && typeof ad2 !== "number") ad2 = 0;
+  if(typeof ap3 === "number" && typeof ap2 !== "number") ap2 = 0;
+  return [ad1, ap1, ad2, ap2, ap3]; // optei por parseFloat no lugar de "+" em cada pois não quero que "NaN" vire "0"
+}
+
+
+
+/** Verifica se passou sem precisar de ap3*/
+const _checkIfPassedDirectly = (n) => n / 2 === averageInAP3;
+
+function _casePassedDirectly(result, isN1 = false){
+  result["texto"] = `Parabéns, você passou direto!
+  
+  ${isN1? "Se lembre que, se não quiser fazer N2, você precisa comparecer a AP3, nem que seja só para assinar.\n\nComo é a N1, coloquei na tabela o necessário para não precisar ir para AP3." 
+    : "No entanto, perceba que você só passou caso faça AP3, então é necessário fazê-la, nem que seja só para colocar o nome."}
+    `; 
+}
+
 function _casenone(n1, result){
-  console.log(n1);
   if(n1/2 < 1) result["texto"] = `Não é possível passar sem precisar de AP3. \nAssumindo que você tire ${averageInAP3} na N2, precisará tirar ${averageInAP3} na ap3.`
   else { 
     let ad2 = 10;
     result["values"]["ad2"] = ad2;
     let needed = _howMuchNeededAp2(n1, ad2);
-    result["texto"] = `\nAssumindo que você tire ${ad2} na AD2, precisará tirar ${needed} na ap2.`
+    result["texto"] = `Assumindo que você tire ${ad2} na AD2, precisará tirar ${needed} na ap2.`
   }
   
 }
@@ -78,12 +95,16 @@ function _casead2ap2ap3(n1, ad2, ap2, ap3, result){
 function _casead2ap2(n1, ad2, ap2, result){
   let n2 = _obtainNx(ad2, ap2); 
 
+
+  
   if((n1 + n2)/2 >= average) result["texto"] = "Você é CDF ou o quê? Passou direto! "
+  else if(_checkIfPassedDirectly(n2)) _casePassedDirectly(result, false);
   else {
     let howMuchNeededAp3 = _howMuchNeededAp3(n1, n2);
     result["texto"] = `Terá que fazer a ap3, e esperar que tire ${howMuchNeededAp3}`;
     result["values"]["ap3"] = howMuchNeededAp3;
   }
+  
 }
 
 function _isPossibleToPassWithoutAP3(n1, ad2){
@@ -93,7 +114,7 @@ function _isPossibleToPassWithoutAP3(n1, ad2){
   y = y.div(2);
   let result = y.plus(x).plus(4).toNumber() >= average;
 
-  return result;
+  return customRound(result);
 }
 
 function _howMuchNeededAp3(n1, n2){
@@ -108,7 +129,8 @@ function _howMuchNeededAp2(n1, ad2) {
   y = y.div(2);
   let result = new BigNumber(average - y - x);
   result = result.div(0.4);
-  return result.toNumber();
+
+  return customRound(result.toNumber());
 }
   
 function _obtainNx(ad, ap, pesoAdPorcento = 0.2, pesoApPorcento = 0.8){
@@ -121,6 +143,7 @@ function _obtainNx(ad, ap, pesoAdPorcento = 0.2, pesoApPorcento = 0.8){
   x = x.multipliedBy(pesoAd);
   y = y.multipliedBy(pesoAp);
 
-  return x.plus(y).toNumber();
+  return customRound(x.plus(y).toNumber());
 
 }
+

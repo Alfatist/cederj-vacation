@@ -1,4 +1,5 @@
 import { resultScores } from './resultScores.js';
+import { customParseNumber } from './helpers/customParseNumber.js';
 
 let mainForm = document.getElementById("mainForm")
 
@@ -14,7 +15,7 @@ function submitMainForm(e){
   let resultParagraph = document.getElementById("result");
 
   
-  let resultJson = resultScores(_customParseNumber(ad1.value), _customParseNumber(ap1.value), _customParseNumber(ad2.value), _customParseNumber(ap2.value), _customParseNumber(ap3.value));
+  let resultJson = resultScores(customParseNumber(ad1.value), customParseNumber(ap1.value), customParseNumber(ad2.value), customParseNumber(ap2.value), customParseNumber(ap3.value));
   resultParagraph.innerText = resultJson.texto
   ad1.value = resultJson.values.ad1
   ad2.value = resultJson.values.ad2
@@ -22,9 +23,4 @@ function submitMainForm(e){
   ap2.value = resultJson.values.ap2
   ap3.value = resultJson.values.ap3
   
-}
-
-function _customParseNumber(string){
-  if(string == "") return null;
-  return +string
 }

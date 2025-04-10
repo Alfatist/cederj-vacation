@@ -24,7 +24,7 @@
             <tr>
               <th>AD</th>
               <td><input type="number" min="0" max="10" required placeholder="AD1*" id="nota ad1" tabindex="1" data-mask="score" inputmode="decimal" step="0.00001"></td>
-              <td><input type="number" min="0" max="10" placeholder="AD2" id="nota ad2" tabindex="3" data-mask="score" inputmode="decimal" step="0.00001"></td>
+              <td><input type="number" min="0" max="10" placeholder="AD2" id="nota ad2" tabindex="3" data-mask="score" inputmode="decimal" step="0.00001" ></td>
               <td></td>
             </tr>
             <tr>
@@ -145,6 +145,7 @@
             <caption>Em caso de AP3, a AP3 substitui a menor N e a média cai para 5</caption>
             <tr><th>MÉDIA</th> <td>6</td></tr>
             <tr><th>MÉDIA (caso ap3)</th> <td>5</td></tr>
+            <tr><th>CASAS DECIMAIS (max)</th> <td>4</td></tr>
             <tr><th>N1</th> <td>0.2 x AD1 + 0.8 x AP1</td></tr>
             <tr><th>N2</th> <td>0.2 x AD2 + 0.8 x AP2</td></tr>
             <tr class="result-table"><th>Cálculo final</th> <td>(N1 + N2)/2</td></tr>
@@ -152,6 +153,7 @@
 
           </table>
         </div>
+        
         <!-- <p style="text-align: start;">Média: 6 <br>Média (caso ap3): 5 <br>N1: AD1 + AD</p> -->
       </div>
 
@@ -174,7 +176,7 @@
     </footer>
     <p style="position: absolute; bottom: 0; font-size: 12px;">Melhorado por <a href="https://www.github.com/alfatist">alfatista</a></p>
 
-    <script src='./static/js/bigNumber.js' title="precisao_matematica"></script>
+    <script src='./static/js/libs/bigNumber.js' title="precisao_matematica"></script>
     <script type="module" src="./static/js/script.js"></script>
 
     <script title="validador input número (notas)">
