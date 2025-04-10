@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quanto preciso, CEDERJ?</title>
+  <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+  <input type="checkbox" name="ajuda" id="ajuda" style="display: none;">
+  <main class="container main">
+      <label for="ajuda" class="container-ajuda" title="Saiba mais">?</label>
+        <h1>Simulador CR de TSC!</h1>
+        <h2>Insira as notas:</h2>
+        <form id="mainForm" action="#">
+          <section class="fields" data-id="fields">
+          <div class="table">
+            <h3 class="period" style="border: none; padding: 0;">1º período</h3>
+            <div class="subjects">
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Construção de Página Web" > CPW</abbr>
+                <input type="number" min="0" max="10" name="CPW" inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Introdução a Informática">IAI</abbr>
+                <input type="number" min="0" max="10" name="IAI" inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Inglês Instrumental">INGLÊS</abbr>
+                <input type="number" min="0" max="10" name="INGLÊS" inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Matemática Básica">MB</abbr>
+                <input type="number" min="0" max="10" name="MB"  inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Projeto e Desenvolvimento de Algoritmos">PDA</abbr>
+                <input type="number" min="0" max="10" name="PDA"  inputmode="decimal" step="0.1">
+              </div>
+            </div>
+          </div>
+
+          <div class="table">
+            <h3 class="period">2º período</h3>
+            <div class="subjects">
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Álgebra Linear">AL</abbr>
+                <input type="number" min="0" max="10" name="AL"  inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Fundamentos de Algoritmos de Computação">FAC</abbr>
+                <input type="number" min="0" max="10" name="FAC"  inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Fundamentos de Programação">FP</abbr>
+                <input type="number" min="0" max="10" name="FP"  inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Organização de Computadores">OC</abbr>
+                <input type="number" min="0" max="10" name="OC"  inputmode="decimal" step="0.1">
+              </div>
+            </div>
+          </div>
+
+          <div class="table">
+            <h3 class="period">3º período</h3>
+            <div class="subjects">
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Estrutura de Dados">ED</abbr>
+                <input type="number" min="0" max="10" name="ED"  inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Física para Computação">FC</abbr>
+                <input type="number" min="0" max="10" name="FC"  inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Matemática para Computação">MC</abbr>
+                <input type="number" min="0" max="10" name="MC"  inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Programação com Interfaces Gráficas">PIG</abbr>
+                <input type="number" min="0" max="10" name="PIG"  inputmode="decimal" step="0.1">
+              </div>
+            </div>
+          </div>
+
+          <div class="table">
+            <h3 class="period">4º período</h3>
+            <div class="subjects">
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Banco de Dados">BD</abbr>
+                <input type="number" min="0" max="10" name="BD"  inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Modelagem de Informação">MI</abbr>
+                <input type="number" min="0" max="10" name="MI"  inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Probabilidade e Estatística">PE</abbr>
+                <input type="number" min="0" max="10" name="PE"  inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Programação Orientada a Objetos">POO</abbr>
+                <input type="number" min="0" max="10" name="POO"  inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Sistemas Operacionais">SO</abbr>
+                <input type="number" min="0" max="10" name="SO"  inputmode="decimal" step="0.1">
+              </div>
+            </div>
+          </div>
+
+          <div class="table">
+            <h3 class="period">5º período</h3>
+            <div class="subjects">
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Análise de Sistemas">AS</abbr>
+                <input type="number" min="0" max="10" name="AS"  inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Engenharia de Software">ES</abbr>
+                <input type="number" min="0" max="10" name="ES"  inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Programação de Aplicações Web">PAW</abbr>
+                <input type="number" min="0" max="10" name="PAW"  inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Redes de Computadores I">REDES1</abbr>
+                <input type="number" min="0" max="10" name="REDES1"  inputmode="decimal" step="0.1">
+              </div>
+              
+                  
+            </div>
+          </div>
+          
+          <div class="table">
+            <h3 class="period">6º período</h3>
+            <div class="subjects">
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Arquitetura e Projeto de Sistemas">APS</abbr>
+                <input type="number" min="0" max="10" name="APS"  inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Computação Gráfica">CG</abbr>
+                <input type="number" min="0" max="10" name="CG"  inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Empreendedorismo e Ética">ÉTICA</abbr>
+                <input type="number" min="0" max="10" name="ES"  inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Redes de Computadores II">REDES2</abbr>
+                <input type="number" min="0" max="10" name="REDES2"  inputmode="decimal" step="0.1">
+              </div>
+              <div class="column">
+                <abbr class="label_field" data-id="label_field" title="Trabalho de Conclusão de Curso">TCC</abbr>
+                <input type="number" min="0" max="10" name="TCC"  inputmode="decimal" step="0.1">
+              </div>
+                  
+            </div>
+          </div>
+          </section>
+          <button type="submit">Calcular</button>
+          
+        </form>
+        
+
+        <p id="result"><span style="opacity: 0.2;">tem +1 nota na mesma disciplina? Clique no ícone de "?" no canto superior direito</span></p>
+      </main>
+    
+    <section class="saber-mais">
+      <div class="container ajuda">
+        <label for="ajuda" class="container-ajuda-sair" title="Sair">X</label>
+        <h1>Saiba mais!</h1>
+        <h2>Olá, este é um sistema desenvolvido por alunos de Tecnologia de Sistemas de Computação. A proposta é você inserir as nota que você quer simular e o sistema lhe dizer qual é o seu.</h2>
+        
+        <h2 style="color: white;">COMO CALCULAR</h2>
+        <div class="overflow-table">
+          <div>
+          <table class="formulas">
+            <caption>Arredondado para 1 casa decimal!</caption>
+            <tr><th>PESO</th> <td>Carga Horária da disciplina</td></tr>
+            <tr><th>DIVIDENDO</th> <td>Nota da disciplina * Carga Horária</td></tr>
+            <tr class="result-table"><th>Cálculo final</th> <td>Somatório(DIVIDENDOS) / Somatório(PESOS) </td></tr>
+          </table>
+          <div data-id="weights"></div>
+          </div>
+        </div>
+        <p><small>Para adicionar mais uma nota em uma disciplina, basta clicar no nome da disciplina.</small></p>
+        <p><small>Para removê-la, basta clicar e segurar nela por 1 segundo.</small></p>
+        
+        
+        
+      </div>
+
+    </section>
+    <small><a href="./cr/" target="_blank">Não sabe a nota ainda?</a></small>
+    <div id="auxilio" style="margin-bottom: 70px;"></div>
+    <p style="position: absolute; bottom: 0; font-size: 12px;">Feito por <a href="https://www.github.com/alfatist" target="_blank">alfatista</a> && <a href="https://www.github.com/brawlingthebits" target="_blank">Beatriz Costa</a></p>
+
+    <script type="module" src="./static/js/script.js"></script>
+
+</body>
+</html>

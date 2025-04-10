@@ -156,11 +156,13 @@
         
         <!-- <p style="text-align: start;">Média: 6 <br>Média (caso ap3): 5 <br>N1: AD1 + AD</p> -->
       </div>
+      
 
     </section>
-    
+    <small>Ei, <a href="./cr/" target="_blank">quer simular seu CR?</a> ^^</small>
 
     <footer class="footer">
+      
         <p class="footer-text">Feito por Beatriz Costa</p>
         <div class="footer-icons">
             <a href="mailto:devbcdc@proton.me" target="_blank" class="icon-link">
@@ -174,23 +176,10 @@
             </a>
         </div>
     </footer>
-    <p style="position: absolute; bottom: 0; font-size: 12px;">Melhorado por <a href="https://www.github.com/alfatist">alfatista</a></p>
+    <p style="position: absolute; bottom: 0; font-size: 12px;">Melhorado por <a href="https://www.github.com/alfatist" target="_blank">alfatista</a></p>
 
     <script src='./static/js/libs/bigNumber.js' title="precisao_matematica"></script>
     <script type="module" src="./static/js/script.js"></script>
 
-    <script title="validador input número (notas)">
-      document.querySelectorAll('[data-mask="score"]').forEach(input => {
-        input.addEventListener('input', function () {
-    
-        let valor = parseFloat(this.value);
-        
-        if (valor < 0) return this.value = 0;
-        if (valor > 10){ 
-          return this.value = 10;
-        }
-      });
-    });
-    </script>
 </body>
 </html>

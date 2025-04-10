@@ -2,6 +2,7 @@
 
 *{
   font-family: "Press Start 2P";
+  
 }
 
 body {
@@ -25,14 +26,18 @@ body {
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    max-width: 400px;
+    max-width: 500px;
     width: 90%;
     text-align: center;
-    margin: 20px 0;
+    margin: 20px 0 40px;
     box-sizing: border-box;
     position: relative;
 }
 
+main.container{
+  display: flex;
+  flex-direction: column;
+}
 
 
 h1 {
@@ -296,4 +301,66 @@ label:hover{
   color: purple;
   border-color: purple;
   cursor: pointer;
+}
+
+.subjects{
+  display: grid;
+  font-size: 0.8rem;
+  font-weight: bold;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  text-overflow: clip;
+  
+  
+}
+
+.subjects > .column{
+  border: 1px solid rgb(160 160 160);
+  padding: 8px 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+h3.period{
+  border-top: 1px solid rgb(160 160 160);;
+  padding-top: 1em;
+}
+
+.subjects > .column .label_field{
+  margin-bottom: 8px;
+  display: block;
+}
+
+.subjects > .column .label_field:hover {
+  color: purple;
+  border-color: purple;
+  cursor: pointer;
+}
+
+
+#mainForm{
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.fields{
+  overflow: auto;
+  scrollbar-width: thin;
+  margin-bottom: 8px;
+}
+
+.addedInput{
+  margin-top: 8px;
+  border-color: greenyellow;
+  
+  transition: border-color 0.3s;
+}
+
+.addedInput:focus-visible{
+  outline: none;
+}
+
+.removingInput{
+  border-color: red;
 }
