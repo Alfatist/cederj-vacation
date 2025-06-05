@@ -1,7 +1,8 @@
 {
   "name": "Calculadora notas CEDERJ",
   "short_name": "Notas CEDERJ",
-  "start_url": ".",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2196f3",
