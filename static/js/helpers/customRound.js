@@ -1,4 +1,4 @@
-const decimalPlaces = 4;
+const decimalPlaces = 1;
 
 export function customRound(number){
   let numberToFix = Math.pow(10, decimalPlaces);

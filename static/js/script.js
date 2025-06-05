@@ -16,11 +16,7 @@ function submitMainForm(e){
 
   
   let resultJson = resultScores(customParseNumber(ad1.value), customParseNumber(ap1.value), customParseNumber(ad2.value), customParseNumber(ap2.value), customParseNumber(ap3.value));
-  resultParagraph.innerText = resultJson.texto
-  ad1.value = resultJson.values.ad1
-  ad2.value = resultJson.values.ad2
-  ap1.value = resultJson.values.ap1
-  ap2.value = resultJson.values.ap2
-  ap3.value = resultJson.values.ap3
+  resultParagraph.innerText = resultJson.texto;
+  ad2.value = resultJson.values.AD2;
   
 }

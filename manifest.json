@@ -1,0 +1,20 @@
+{
+  "name": "Calculadora notas CEDERJ",
+  "short_name": "Notas CEDERJ",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2196f3",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "type": "image/x-icon",
+      "sizes": "192x192"
+    },
+    {
+      "src": "favicon.ico",
+      "type": "image/x-icon",
+      "sizes": "512x512"
+    }
+  ]
+}

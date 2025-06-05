@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <link rel="manifest" href="manifest.json" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quanto preciso, CEDERJ?</title>
@@ -61,82 +62,7 @@
         <h1>Saiba mais!</h1>
         <h2>Olá, este é um sistema desenvolvido por alunos do CEDERJ. A proposta é você inserir a nota que você já tem e o sistema lhe dizer qual a sua atual situação.</h2>
         <div class="overflow-table">
-        <table class="calculos">
-          <caption>Cálculos</caption>
-          <tr>
-            <th></th>
-            <th>Caso 1</th>
-            <th>Caso 2</th>
-            <th>Caso 3</th>
-            <th>Caso 4</th>
-            
-          </tr>
-
-          <tr>
-            <th>
-              AD1
-            </th>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-            
-          </tr>
-          <tr>
-            <th>
-              AP1
-            </th>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-            
-          </tr>
-          <tr>
-            <th>
-              AD2
-            </th>
-            <td></td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-            
-
-          </tr>
-          <tr>
-            <th>
-              AP2
-            </th>
-            <td></td>
-            <td></td>
-            <td>X</td>
-            <td>X</td>
-            
-
-          </tr>
-          <tr>
-            <th>
-              AP3
-            </th>
-            <td></td>
-            <td></td>
-            <td></td>
-            
-            <td>X</td>
-
-          </tr>
-          <tr class="result-table">
-            <th>
-              Eu prevejo: 
-            </th>
-            <td>AP2</td>
-            <td>AP2</td>
-            <td>AP3</td>
-            <td>Se passou</td>
-
-          </tr>
-          
-        </table>
+        
       </div>
 
         
@@ -145,11 +71,12 @@
           <table class="formulas">
             <caption>Em caso de AP3, a AP3 substitui a menor N e a média cai para 5</caption>
             <tr><th>MÉDIA</th> <td>6</td></tr>
-            <tr><th>MÉDIA (caso ap3)</th> <td>5</td></tr>
-            <tr><th>CASAS DECIMAIS (max)</th> <td>4</td></tr>
-            <tr><th>N1</th> <td>0.2 x AD1 + 0.8 x AP1</td></tr>
-            <tr><th>N2</th> <td>0.2 x AD2 + 0.8 x AP2</td></tr>
+            <tr><th>MÉDIA caso AP3</th> <td>5</td></tr>
+            <tr><th>CASAS DECIMAIS (max)</th> <td>1</td></tr>
+            <tr><th>N1</th> <td>0.2 * AD1 + 0.8 * AP1</td></tr>
+            <tr><th>N2</th> <td>0.2 * AD2 + 0.8 * AP2</td></tr>
             <tr class="result-table"><th>Cálculo final</th> <td>(N1 + N2)/2</td></tr>
+            <tr><th>Cálculo alternativo</th> <td>0.1 * ADs + 0.4 * APs</td></tr>
 
 
           </table>
