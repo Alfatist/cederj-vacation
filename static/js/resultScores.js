@@ -49,6 +49,8 @@ function _ADdMissingValuesIfAny(AD1, AP1, AD2, AP2, AP3){
 const _checkIfPassedDirectly = (n) => n / 2 === averageInAP3;
 
 function _casePassedDirectly(result, isN1 = false){
+
+  if(isN1) result.values.AD2 = 10;
   result["texto"] = `Parabéns, você passou direto!
   
   ${isN1? "Se lembre que, se não quiser fazer N2, você precisa comparecer a AP3, nem que seja só para assinar.\n\nComo é a N1, coloquei na tabela o necessário para não precisar ir para AP3." 
