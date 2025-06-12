@@ -10,7 +10,7 @@ export function resultScores(AD1, AP1, AD2, AP2, AP3) {
   /** Caso precise alertar um texto no fim, ADicione o texto a esta variável */ 
   let textToAlert = ""
 
-  /** ResultADo que retorna no final de tudo*/
+  /** ResultaDo que retorna no final de tudo*/
   let result = {
     "texto": "",
     "values": {
@@ -27,9 +27,8 @@ export function resultScores(AD1, AP1, AD2, AP2, AP3) {
   if((typeof AP2 === "number") && (typeof AD2 === "number") && (typeof AP3 === "number")) _caseAD2AP2AP3(n1, AD2, AP2, AP3, result)  
   else if (typeof AP2 === "number" && typeof AD2 === "number") _caseAD2AP2(n1, AD2, AP2, result)
   else if (typeof AD2 === "number") _caseAD2(n1, AD2, result)
+  else if(_checkIfPassedDirectly(n1)) _casePassedDirectly(result, true);  
   else _casenone(n1, result);
-
-  if(_checkIfPassedDirectly(n1)) _casePassedDirectly(result, true);  
 
   if(textToAlert != "") alert(textToAlert);
   return result
@@ -69,7 +68,8 @@ function _casenone(n1, result){
 }
 
 function _caseAD2(n1, AD2, result){
-  if( (n1 + _obtainNx(AD2, 0))/2 === average) result["texto"] = `Sequer precisa de AP2, passou direto!`;
+  if( (n1 + _obtainNx(AD2, 0))/2 === average) return result["texto"] = `Sequer precisa de AP2, passou direto!`;
+  
   else if(!_isPossibleToPassWithoutAP3(n1, AD2) ){
     let AP2 = average;
     result["values"]["AP2"] = AP2;
@@ -82,14 +82,16 @@ function _caseAD2(n1, AD2, result){
     result["values"]["AP2"] = needed;
     result["texto"] = `Para não ir à AP3, você precisa de ${needed} na AP2.`
   }
+
+  if (_checkIfPassedDirectly(n1)) result["texto"] += `\n\nVálido destacar que, com sua nota na AD1 e AP1, você sequer precisa da ap2. Basta ir para a AP3 e assinar seu nome.`;
 }
 
 function _caseAD2AP2AP3(n1, AD2, AP2, AP3, result){
   let n2 = _obtainNx(AD2, AP2);
-  let howMuchNeededAp3 = _howMuchNeededAp3(n1, n2);
+  const howMuchNeededAp3 = _howMuchNeededAp3(n1, n2);
     
-
-  result["texto"] = AP3 >= howMuchNeededAp3 ? "Parabéns, você passou ;)" : `Poxa, não foi dessa vez. Nesse caso a AP3 precisa ser no mínimo ${howMuchNeededAp3}`
+  let finalScore = customRound((Math.max(n1, n2) + AP3) / 2);
+  result["texto"] = finalScore >= averageInAP3 ? `Parabéns, você passou ;)\n\nNota final: ${finalScore}` : `Poxa, não foi dessa vez. Nesse caso a AP3 precisa ser no mínimo ${howMuchNeededAp3}`
 }
 
 function _caseAD2AP2(n1, AD2, AP2, result){
@@ -97,7 +99,7 @@ function _caseAD2AP2(n1, AD2, AP2, result){
 
 
   
-  if((n1 + n2)/2 >= average) result["texto"] = "Você é CDF ou o quê? Passou direto! "
+  if((n1 + n2)/2 >= average) result["texto"] = "Você é CDF ou o quê? Passou direto! \n\nNota final: " + customRound((n1 + n2) / 2);
   else if(_checkIfPassedDirectly(n2)) _casePassedDirectly(result, false);
   else {
     let howMuchNeededAp3 = _howMuchNeededAp3(n1, n2);
