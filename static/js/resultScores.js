@@ -91,7 +91,8 @@ function _caseAD2AP2AP3(n1, AD2, AP2, AP3, result){
   const howMuchNeededAp3 = _howMuchNeededAp3(n1, n2);
     
   let finalScore = customRound((Math.max(n1, n2) + AP3) / 2);
-  result["texto"] = finalScore >= averageInAP3 ? `Parabéns, você passou ;)\n\nNota final: ${finalScore}` : `Poxa, não foi dessa vez. Nesse caso a AP3 precisa ser no mínimo ${howMuchNeededAp3}`
+  result["texto"] = finalScore >= averageInAP3 ? `Parabéns, você passou ;)` : `Poxa, não foi dessa vez. Nesse caso a AP3 precisa ser no mínimo ${howMuchNeededAp3}`
+  result["texto"] += `\n\nNota: ${finalScore}`
 }
 
 function _caseAD2AP2(n1, AD2, AP2, result){
@@ -99,13 +100,15 @@ function _caseAD2AP2(n1, AD2, AP2, result){
 
 
   
-  if((n1 + n2)/2 >= average) result["texto"] = "Você é CDF ou o quê? Passou direto! \n\nNota final: " + customRound((n1 + n2) / 2);
+  if((n1 + n2)/2 >= average) result["texto"] = "Você é CDF ou o quê? Passou direto!";
   else if(_checkIfPassedDirectly(n2)) _casePassedDirectly(result, false);
   else {
     let howMuchNeededAp3 = _howMuchNeededAp3(n1, n2);
     result["texto"] = `Terá que fazer a AP3, e esperar que tire ${howMuchNeededAp3}`;
     result["values"]["AP3"] = howMuchNeededAp3;
   }
+
+  result["texto"] += `\n\nNota: ${customRound((n1 + n2) / 2)}`
   
 }
 
